@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة كلية الهندسة المعلوماتية</title>
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    
+    <div  class="tab-system">
+            <!-- الشريط الجانبي -->
+            <div class="sidebar">
+                <h2>نظام إدارة الكلية </h2>
+                <ul class="nav-tabs">
+                    <li data-tab="students">الطلاب</li>
+                    <li data-tab="posts">المنشورات</li>
+                    <li data-tab="projects">المشاريع</li>
+                    <li data-tab="subjects">المواد</li>
+                    <li data-tab="admins">المشرفين</li>
+                    <li data-tab="subjects">المواد الدراسية</li>
+                    <li data-tab="lectures">المحاضرات</li>
+                    <li data-tab="quizzes">الاختبارات</li>
+                    <li data-tab="classes">الفصول الدراسية</li>
+                </ul>
+            </div>
+        
+            <!-- محتوى التبويبات -->
+        <div class="tab-content">
+                <!-- تبويب الطلاب -->
+                <div id="students" class="tab-pane active">
+                    <h2>إدارة الطلاب</h2>
+                    <button class="btn btn-success" onclick="showForm('student')">+ إضافة طالب</button>
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>الرقم الجامعي</th>
+                                <th>الاسم</th>
+                                <th>السنة</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- تبويب المنشورات -->
+                <div id="posts" class="tab-pane">
+                    <h2>إدارة المنشورات</h2>
+                    <button class="btn btn-success" onclick="showForm('post')">+ إضافة منشور</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>العنوان</th>
+                                <th>المحتوى</th>
+                                <th>التاريخ</th>
+                                <th>الدكتور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- تبويب المشاريع -->
+                <div id="projects" class="tab-pane">
+                    <h2>إدارة المشاريع</h2>
+
+                    <button class="btn btn-success" onclick="showForm('project')">+ إضافة مشروع</button>
+
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>العنوان</th>
+                                <th>النوع</th>
+                                <th>الحالة</th>
+                                <th>المشرف</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectTable"></tbody>
+                    </table>
+                </div>
+                
+                <!-- تبويب المواد الدراسية -->
+                <div id="subjects" class="tab-pane">
+                    <h2>إدارة المواد الدراسية</h2>
+                    <button class="btn btn-success" onclick="showForm('subject')">+ إضافة مادة</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>كود المادة</th>
+                                <th>اسم المادة</th>
+                                <th>النوع</th>
+                                <th>السنة</th>
+                                <th>الفصل</th>
+                                <th>الدكتور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subjectTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- تبويب المحاضرات -->
+                <div id="lectures" class="tab-pane">
+                    <h2>إدارة المحاضرات</h2>
+                    <button class="btn btn-success" onclick="showForm('lecture')">+ إضافة محاضرة</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>عنوان المحاضرة</th>
+                                <th>نوع المادة</th>
+                                <th>الملف</th>
+                                <th>التاريخ</th>
+                                <th>ملاحظات</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lectureTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- تبويب الاختبارات -->
+                <div id="quizzes" class="tab-pane">
+                    <h2>إدارة الاختبارات</h2>
+                    <button class="btn btn-success" onclick="showForm('quiz')">+ إضافة اختبار</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>نص السؤال</th>
+                                <th>الإجابات</th>
+                                <th>الإجابة الصحيحة</th>
+                                <th>المادة</th>
+                                <th>الدكتور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quizTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- تبويب الفصول الدراسية -->
+                <div id="classes" class="tab-pane">
+                    <h2>إدارة الفصول</h2>
+                    <button class="btn btn-success" onclick="showForm('class')">+ إضافة فصل</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>رقم الفصل</th>
+                                <th>ملف الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="classTable"></tbody>
+                    </table>
+                </div>
+                <!-- تبويب المشرفين -->
+                <div id="admins" class="tab-pane">
+                    <h2>إدارة المشرفين</h2>
+                    <button class="btn btn-success" onclick="showForm('admin')">+ إضافة مشرف</button>
+
+                    <table class="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>رقم المشرف</th>
+                                <th>الاسم</th>
+                                <th>الصلاحيات</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTable"></tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+  
+
+
+    
+
+    <!-- نموذج الإدخال  -->
+    <div id="studentmodal">
+    </div>
+    <div id="postmodal">
+    </div>
+    <div id="projectmodal">
+    </div>
+    <div id="adminmodal">
+    </div>
+    <div id="subjectmodal">
+    </div>
+    <div id="lecturemodal">
+    </div>
+    <div id="classmodal">
+    </div>
+    <div id="quizmodal">
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
