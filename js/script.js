@@ -76,16 +76,7 @@ document.querySelectorAll('.btn-format').forEach(btn => {
         // يمكن استدعاء بقية الجداول هنا
     };
 
-/* // تفعيل اختيار متعدد مع إمكانية البحث
- $(document).ready(function() {
-        $('.tags-select').select2({
-            tags: true,
-            placeholder: "اختر الأدوات المستخدمة",
-            allowClear: true,
-            dir: "rtl"
-        });
-    });
-*/
+
 
     const fullData = {
         subjects: [
@@ -158,85 +149,6 @@ document.querySelectorAll('.btn-format').forEach(btn => {
     };
 
 
-/*
-    document.querySelector('[name="lec_note"]').addEventListener('input', function(e) {
-const counter = document.querySelector('.char-counter .current-count');
-counter.textContent = e.target.value.length;
-});
-*/
-/*
-// تفعيل البحث في قائمة المواد
-$(document).ready(function() {
-$('.subject-select').select2({
-    placeholder: "ابحث عن المادة",
-    allowClear: true,
-    dir: "rtl"
-});
-});
-*/
-
-/*
-// تفعيل العدادات والتفاعلات
-document.querySelector('[name="qu_text"]').addEventListener('input', function(e) {
-document.querySelector('.char-counter .current-count').textContent = e.target.value.length;
-});
-
-*/
-/*
-// تحديث قائمة الإجابات الصحيحة تلقائيًا
-document.querySelectorAll('[name^="ansr_"]').forEach(input => {
-input.addEventListener('input', function() {
-    const answerSelect = document.querySelector('[name="right_ansr"]');
-    const optionIndex = this.name.split('_')[1] - 1;
-    answerSelect.options[optionIndex + 1].textContent = this.value || `الإجابة ${optionIndex + 1}`;
-});
-});
-*/
-/*
-// تفعيل البحث في المواد
-$(document).ready(function() {
-$('.subject-select').select2({
-    placeholder: "ابحث عن المادة",
-    allowClear: true,
-    dir: "rtl"
-});
-});
-
-*/
-
-/*
-// تفعيل عداد الأحرف
-document.querySelector('[name="class_notes"]').addEventListener('input', function(e) {
-document.querySelector('.char-counter .current-count').textContent = e.target.value.length;
-});
-*/
-/*
-// تفعيل معاينة الملفات
-document.querySelector('[name="attendance_file"]').addEventListener('change', function(e) {
-const preview = document.querySelector('.file-preview');
-const file = e.target.files[0];
-
-if (file) {
-    preview.innerHTML = `
-        <i class="mdi mdi-file-excel"></i>
-        ${file.name} 
-        <span class="file-size">(${(file.size/1024/1024).toFixed(2)}MB)</span>
-    `;
-}
-});*/
-/*
-// التحقق من حجم الملف
-document.getElementById('classForm').addEventListener('submit', function(e) {
-const fileInput = document.querySelector('[name="attendance_file"]');
-const maxSize = parseInt(fileInput.dataset.maxSize) * 1024 * 1024;
-
-if (fileInput.files[0].size > maxSize) {
-    e.preventDefault();
-    alert('حجم الملف أكبر من المسموح!');
-}
-});
-*/
-
 
 
 
@@ -250,6 +162,55 @@ if (fileInput.files[0].size > maxSize) {
     }
 
     
+
+function closeModal(modalName) {
+    document.getElementById(`${modalName}Modal`).style.display = "none";
+}
+
+function openModal(modalName) {
+    document.getElementById(`${modalName}Modal`).style.display = "block";
+}
+
+function showStudentDetails(student) {
+    document.getElementById("view_name").innerText = student.name;
+    document.getElementById("view_father").innerText = student.father;
+    document.getElementById("view_mother").innerText = student.mother;
+    document.getElementById("view_birth").innerText = student.birth;
+    document.getElementById("view_join").innerText = student.join;
+    document.getElementById("view_year").innerText = student.year;
+    document.getElementById("view_state").innerText = student.state;
+    document.getElementById("view_nationality").innerText = student.nationality;
+    document.getElementById("view_bac_avg").innerText = student.bac_avg;
+    document.getElementById("view_compar").innerText = student.compar_type;
+    document.getElementById("view_cls").innerText = student.cls_id;
+
+    openModal("viewStudent");
+}
+
+function showDeleteStudentModal(studentId, studentName) {
+    document.getElementById("delete_student_name").innerText = studentName;
+    window.currentDeleteId = studentId;
+    openModal("deleteStudent");
+}
+
+function confirmDeleteStudent() {
+    const id = window.currentDeleteId;
+    // نفذ عملية الحذف باستخدام AJAX أو طريقة أخرى
+    console.log("حذف الطالب ذو المعرف: ", id);
+    closeModal("deleteStudent");
+}
+
+function showEditStudentModal(student) {
+    document.getElementById("edit_id").value = student.id;
+    document.getElementById("edit_name").value = student.name;
+    // أكمل باقي الحقول...
+
+    openModal("editStudent");
+}
+
+
+
+
     function loadHTML(id, file) {
         fetch(file)
             .then(response => response.text())
@@ -258,7 +219,14 @@ if (fileInput.files[0].size > maxSize) {
             });
         }
     loadHTML("postmodal", "/modals/postmodal.html");
+    //student models
     loadHTML("studentmodal", "/modals/studentmodal.html");
+
+    loadHTML("studentdetailsmodal", "/modals/studentdetailsmodal.html");
+    loadHTML("editstudentmodal", "/modals/editstudentmodal.html");
+    loadHTML("confirmdeletemodal", "/modals/confirmdeletemodal.html");
+
+
     loadHTML("projectmodal", "/modals/projectmodal.html");
     loadHTML("adminmodal", "/modals/adminmodal.html");
     loadHTML("subjectmodal", "/modals/subjectmodal.html");
@@ -296,3 +264,10 @@ if (fileInput.files[0].size > maxSize) {
            sidebar.classList.remove('active');
        }
    });
+
+
+
+
+
+
+

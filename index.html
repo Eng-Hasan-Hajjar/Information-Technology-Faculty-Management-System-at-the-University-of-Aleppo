@@ -74,7 +74,10 @@
                 <!-- تبويب الطلاب -->
                 <div id="students" class="tab-pane active">
                     <h2>إدارة الطلاب</h2>
-                    <button class="btn btn-success" onclick="showForm('student')">+ إضافة طالب</button>
+                    <button class="btn btn-success" onclick="showForm('student')">
+                        <i class="fas fa-user-plus"></i> إضافة طالب
+                    </button>
+                    
                     <table class="dynamic-table">
                         <thead>
                             <tr>
@@ -85,10 +88,50 @@
                                 <th>الإجراءات</th>
                             </tr>
                         </thead>
-                        <tbody id="studentTable"></tbody>
+                        <tbody id="studentTable">
+                            <!-- بيانات افتراضية -->
+                            <tr>
+                                <td>20231001</td>
+                                <td>محمد أحمد حسن</td>
+                                <td>الثالثة</td>
+                                <td><span class="status-badge active">نشط</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn btn-edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <button class="btn btn-info" onclick="showStudentDetails('student')">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>20231002</td>
+                                <td>فاطمة خالد محمود</td>
+                                <td>الثانية</td>
+                                <td><span class="status-badge suspended">موقوف</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn btn-edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <button class="btn btn-info">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-
                 <!-- تبويب المنشورات -->
                 <div id="posts" class="tab-pane">
                     <h2>إدارة المنشورات</h2>
@@ -233,6 +276,18 @@
     <!-- نموذج الإدخال  -->
     <div id="studentmodal">
     </div>
+    <div id="studentdetailsmodal">
+    </div>
+  
+    <div id="editstudentmodal">
+    </div>
+  
+    <div id="confirmdeletemodal">
+    </div>
+  
+   
+
+  
     <div id="postmodal">
     </div>
     <div id="projectmodal">
