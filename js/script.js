@@ -273,11 +273,12 @@ if (fileInput.files[0].size > maxSize) {
 
 
 
-   // JavaScript معدل
+
+
+   // التحكم في القائمة الجانبية
    const sidebar = document.querySelector('.sidebar');
    const toggleBtn = document.querySelector('.sidebar-toggle');
 
-   // حدث النقر على الزر
    toggleBtn.addEventListener('click', () => {
        sidebar.classList.toggle('active');
    });
@@ -289,13 +290,9 @@ if (fileInput.files[0].size > maxSize) {
        }
    });
 
-   // إغلاق القائمة عند تغيير حجم النافذة
+   // إغلاق القائمة عند تغيير حجم الشاشة
    window.addEventListener('resize', () => {
        if (window.innerWidth > 768) {
            sidebar.classList.remove('active');
        }
    });
-
-   document.querySelector('.sidebar-overlay').addEventListener('click', () => {
-    sidebar.classList.remove('active');
-});
