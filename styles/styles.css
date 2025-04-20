@@ -6,6 +6,11 @@
             --danger-color: #e74c3c;
         }
 
+
+
+
+
+
         * {
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
@@ -643,3 +648,335 @@ select[name="class_location"] option[value="B"] { border-color: #2ecc71; }
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+        /* التنسيقات العامة */
+        .tab-system {
+            position: relative;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border-left: 1px solid #dee2e6;
+            transition: 0.3s;
+            padding: 20px;
+        }
+        
+        .tab-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        /* زر التبديل - مخفي بالافتراضي */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* التنسيقات للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: -250px;
+                height: 100vh;
+                z-index: 999;
+                background: #fff;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            }
+            
+            .sidebar.active {
+                right: 0;
+            }
+            
+            .sidebar-toggle {
+                display: block;
+            }
+            
+            .tab-content {
+                width: 100%;
+                margin-left: 0;
+                padding-top: 70px;
+            }
+        }
+        
+        
+
+        
+
+
+
+
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #ecf0f1;
+            --hover-color: #3d566e;
+            --border-color: #405669;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f4f6f9;
+            direction: rtl;
+        }
+
+        /* الهيكل الرئيسي */
+        .tab-system {
+            margin-right: 250px;
+            transition: margin 0.3s;
+        }
+
+        /* الشريط الجانبي */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--primary-color);
+            color: var(--text-color);
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            background: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-tabs li {
+            padding: 0.9rem 1.5rem;
+            margin: 0.3rem 0;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-tabs li::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-tabs li:hover,
+        .nav-tabs li.active {
+            background: var(--hover-color);
+            padding-right: 2rem;
+        }
+
+        .nav-tabs li.active::before {
+            transform: scaleY(1);
+        }
+
+        /* المحتوى الرئيسي */
+        .tab-content {
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        /* الجداول */
+        .dynamic-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dynamic-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: right;
+        }
+
+        .dynamic-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dynamic-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* الأزرار */
+        .btn {
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        /* التجاوبية */
+        @media (max-width: 768px) {
+            .tab-system {
+                margin-right: 0;
+            }
+            
+            .sidebar {
+                right: -250px;
+                transition: right 0.3s;
+            }
+            
+            .sidebar.active {
+                right: 0;
+            }
+            
+            .sidebar-toggle {
+                display: block !important;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1100;
+            }
+        }
+
+        /* زر التبديل */
+        .sidebar-toggle {
+            display: none;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+
+
+         /* التنسيقات الأساسية */
+         .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px; /* تعديل الموضع ليتناسب مع RTL */
+            z-index: 9999;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+
+        /* حالة الجوال */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+
+
+
+
+
+
+        body.sidebar-active {
+            overflow: hidden;
+        }
+        
+        /* إضافة overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            display: none;
+        }
+        
+        .sidebar.active + .sidebar-overlay {
+            display: block;
+        }

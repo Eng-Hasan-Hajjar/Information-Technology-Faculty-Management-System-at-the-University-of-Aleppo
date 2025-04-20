@@ -268,3 +268,34 @@ if (fileInput.files[0].size > maxSize) {
 
 
     loadHTML("sidebar", "/layouts/sidebar.html");
+
+
+
+
+
+   // JavaScript معدل
+   const sidebar = document.querySelector('.sidebar');
+   const toggleBtn = document.querySelector('.sidebar-toggle');
+
+   // حدث النقر على الزر
+   toggleBtn.addEventListener('click', () => {
+       sidebar.classList.toggle('active');
+   });
+
+   // إغلاق القائمة عند النقر خارجها
+   document.addEventListener('click', (e) => {
+       if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+           sidebar.classList.remove('active');
+       }
+   });
+
+   // إغلاق القائمة عند تغيير حجم النافذة
+   window.addEventListener('resize', () => {
+       if (window.innerWidth > 768) {
+           sidebar.classList.remove('active');
+       }
+   });
+
+   document.querySelector('.sidebar-overlay').addEventListener('click', () => {
+    sidebar.classList.remove('active');
+});
