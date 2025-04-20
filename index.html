@@ -7,6 +7,7 @@
     <!-- CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/script.js" defer></script>
@@ -23,24 +24,50 @@
        
             <!-- الشريط الجانبي -->
             <div class="sidebar">
-                <h2>نظام إدارة الكلية </h2>
-                <img src="res/img/college-logo.png" 
-                    alt="شعار الكلية" 
-                    class="college-logo"
-                    onerror="this.style.display='none'">
-
+                <div class="sidebar-header">
+                    <img src="res/img/college-logo.png" 
+                         alt="شعار الكلية" 
+                         class="college-logo"
+                         onerror="this.style.display='none'">
+                    <h2>نظام إدارة الكلية</h2>
+                </div>
+            
                 <ul class="nav-tabs">
-                    <li data-tab="students">الطلاب</li>
-                    <li data-tab="posts">المنشورات</li>
-                    <li data-tab="projects">المشاريع</li>
-                    <li data-tab="subjects">المواد</li>
-                    <li data-tab="admins">المشرفين</li>
-                    <li data-tab="subjects">المواد الدراسية</li>
-                    <li data-tab="lectures">المحاضرات</li>
-                    <li data-tab="quizzes">الاختبارات</li>
-                    <li data-tab="classes">الفصول الدراسية</li>
+                    <li data-tab="students">
+                        <i class="fas fa-users"></i>
+                        <span>الطلاب</span>
+                    </li>
+                    <li data-tab="posts">
+                        <i class="fas fa-newspaper"></i>
+                        <span>المنشورات</span>
+                    </li>
+                    <li data-tab="projects">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>المشاريع</span>
+                    </li>
+                    <li data-tab="subjects">
+                        <i class="fas fa-book-open"></i>
+                        <span>المواد</span>
+                    </li>
+                    <li data-tab="admins">
+                        <i class="fas fa-user-shield"></i>
+                        <span>المشرفين</span>
+                    </li>
+                    <li data-tab="lectures">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>المحاضرات</span>
+                    </li>
+                    <li data-tab="quizzes">
+                        <i class="fas fa-question-circle"></i>
+                        <span>الاختبارات</span>
+                    </li>
+                    <li data-tab="classes">
+                        <i class="fas fa-door-open"></i>
+                        <span>الفصول الدراسية</span>
+                    </li>
                 </ul>
             </div>
+            
         
             <!-- محتوى التبويبات -->
         <div class="tab-content">
